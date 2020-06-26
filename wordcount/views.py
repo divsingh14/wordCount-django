@@ -3,10 +3,12 @@ from django.shortcuts import render
 import operator
 
 def home(request):
-    return render(request,'home.html')
+    return render(request,'home.html', { 'textError' : 0 })
 
 def count(request):
     fullText = request.GET['fullText']
+    if(fullText == ""):
+        return render(request,'home.html',{ 'textError' : 1 })
 
     wordList = fullText.split()
     characterCount = len(fullText)

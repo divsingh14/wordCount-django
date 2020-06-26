@@ -7,35 +7,51 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">    
     <style>
-        div.card {
-            /* width: 250px; */
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            text-align: center;
-            border-radius: 5px;
-            
-        }
+      body{
+        color: white;
+        background: rgb(165,129,193);
+        background: linear-gradient(90deg,  rgba(165,129,193,1) 53%, rgba(90,89,231,1) 100%);
+        background: -moz-linear-gradient(90deg,  rgba(165,129,193,1) 53%, rgba(90,89,231,1) 100%);
+        background: -webkit-gradient(90deg,  rgba(165,129,193,1) 53%, rgba(90,89,231,1) 100%);
+      } 
+      div.card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          text-align: center;
+          border-radius: 5px;  
+          background-color: transparent;  
+      }
+      nav a{
+        color: white;
+        font-size: 16px;
+      }
+      .navbar-brand{
+        font-size: 22px !important;
+      }
+      .table{
+        color: white;
+      }
     </style>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg transparent">
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
+      <a class="navbar-brand" href="{% url 'home' %}"><b>Word Count</b></a>
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+    <div class="container">
         <div class="card mt-5 py-5">
             <div class="card-body">
                 <h3 class="card-title text-center">Word Count</h3>
@@ -46,7 +62,7 @@
                 <h6>Total Character : {{ TotalChar }}</h6>
                 <br>
                 <div class="container">
-                    <table class="table table-responsive">
+                    <table class="table table-responsive table-bordered">
                         <thead class="table-dark">
                           <tr>
                               <td>Word</td>
@@ -65,6 +81,7 @@
                 </div>
             </div>
         </div>
+        <br><br>
     </div>
 </body>
     <!-- JavaScript and dependencies -->

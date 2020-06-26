@@ -7,28 +7,41 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">    
     <style>
-        div.card {
-            /* width: 250px; */
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            text-align: center;
-            border-radius: 5px;
-            background-color: #45aaf2;
-            border : 1px #45aaf2;
-        }
-        h3,label,button{
-            color: white;
-        }
+      body{
+        background: rgb(165,129,193);
+        background: linear-gradient(90deg,  rgba(165,129,193,1) 53%, rgba(90,89,231,1) 100%);
+        background: -moz-linear-gradient(90deg,  rgba(165,129,193,1) 53%, rgba(90,89,231,1) 100%);
+        background: -webkit-gradient(90deg,  rgba(165,129,193,1) 53%, rgba(90,89,231,1) 100%);
+      } 
+      div.card {
+          /* width: 250px; */
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          text-align: center;
+          border-radius: 10px;
+          background-color: transparent;
+          border : 1px #45aaf2;
+      }
+      nav a{
+        color: white;
+        font-size: 16px;
+      }
+      .navbar-brand{
+        font-size: 22px !important;
+      }
+      h3,label{
+        color: white;
+      }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg transparent">
         <div class="container">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="{% url 'home' %}"><b>Word Count</b></a>
+          <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+          <div class="collapse navbar-collapse text-right" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
@@ -43,6 +56,13 @@
         <div class="card mt-5 py-5">
             <div class="card-body">
                 <h3 class="card-title text-center">Word Count</h3>
+                
+                {% if textError == 1 %}
+                  <div class="alert alert-dark" role="alert">
+                    Please Enter Some Text Before Submitting. 
+                  </div>
+                {% endif %}
+                
                 <form action="{% url 'count' %}" >
                     <div class="mb-3 px-5">
                         <label for="textBox" class="form-label">Enter Text</label>
